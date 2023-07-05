@@ -1,15 +1,25 @@
 package models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Libro {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private Long ISBN;
     private String titulo;
     private Integer anio;
     private Integer ejemplares;
     private Boolean alta;
+
+    public Libro() {}
 
     public Libro(Long ISBN, String titulo, Integer anio, Integer ejemplares, Boolean alta) {
         this.ISBN = ISBN;

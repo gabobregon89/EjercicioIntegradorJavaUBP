@@ -6,15 +6,7 @@
   <display-name>Archetype Created Web Application</display-name>
     <context-param>
         <param-name>javax.faces.CONFIG_FILES</param-name>
-        <param-value>./presistence.xml</param-value>
+        <param-value>META-INF/presistence.xml</param-value>
     </context-param>
-<!--    <servlet>-->
-<!--        <servlet-name>Faces Servlet</servlet-name>-->
-<!--&lt;!&ndash;        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>&ndash;&gt;-->
-<!--        <load-on-startup>1</load-on-startup>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>Faces Servlet</servlet-name>-->
-<!--        <url-pattern>*.xhtml</url-pattern>-->
-<!--    </servlet-mapping>-->
+
 </web-app>
