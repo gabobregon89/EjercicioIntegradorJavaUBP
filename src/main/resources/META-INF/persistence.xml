@@ -9,7 +9,7 @@
         <class>models.Libro</class> <!-- agregar las clases de tus entidades -->
         <properties>
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:sqlite:C:\Users\Dicsys\Desktop\EjercicioIntegradorJavaUBP\EjercicioIntegradorJavaUBP/Escuela.db" />
+                      value="jdbc:sqlite:C:/Users/Dicsys/Desktop/EjercicioIntegradorJavaUBP/EjercicioIntegradorJavaUBP/Libreria.db" />
             <property name="javax.persistence.jdbc.driver"
                       value="org.sqlite.JDBC" />
             <property name="javax.persistence.jdbc.user" value="" />
