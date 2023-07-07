@@ -25,7 +25,9 @@
     <br>
     <br>
     <h2>Buscar un libro</h2>
-    <a href="buscarLibros.jsp">Buscando libros</a>
-
+    <form action="SvLibro" method="GET">
+        <input type="hidden" name="action" value="todos">
+        <button type="submit">Mostrar todos</button>
+    </form>
 </body>
 </html>

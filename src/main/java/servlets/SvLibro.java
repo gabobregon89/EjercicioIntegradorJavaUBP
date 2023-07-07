@@ -20,14 +20,15 @@ public class SvLibro extends HttpServlet {
         this.libroService = new LibroService();
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String action = request.getParameter("action");
 
-        if (action.equals("todos")) {
-            List<Libro> listaLibros = libroService.todosLosLibros();
-            HttpSession miSession = request.getSession();
-            miSession.setAttribute("listaLibros", listaLibros);
-        }
+//        if (action.equals("todos")) {
+        List<Libro> listaLibros = libroService.todosLosLibros();
+        HttpSession miSession = request.getSession();
+        miSession.setAttribute("listaLibros", listaLibros);
+//        }
+        response.sendRedirect("buscarLibros.jsp");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {

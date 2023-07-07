@@ -13,34 +13,44 @@
 <body>
     <h1>Buscador de libros</h1>
     <br>
-    <h2>Mostrar todos</h2>
-    <form action="SvLibro" method="GET">
-        <input type="hidden" name="action" value="todos">
-        <button type="submit">Buscar</button>
-    </form>
     <h2>Lista de libros</h2>
     <%
         java.util.List<Libro> listaLibros = (java.util.List) request.getSession().getAttribute("listaLibros");
-
-        for (Libro libro : listaLibros) {
-
+        for (int i = 0; i < listaLibros.size(); i++) {
     %>
-    <h3>
-        ISBN:
-        <%=libro.getISBN()%>
-    </h3>
-    <h3>
-        Titulo:
-        <%=libro.getTitulo()%>
-    </h3>
-    <h3>
-        Año de creación:
-        <%=libro.getAnio()%>
-    </h3>
-    <h3>
-        Ejemplares:
-        <%=libro.getEjemplares()%>
-    </h3>
+    <table border="2">
+        <tr>
+            <th style="width: 100px">ISBN</th>
+            <th style="width: 100px">Titulo</th>
+            <th style="width: 100px">Año de creación</th>
+            <th style="width: 100px">Ejemplares</th>
+        </tr>
+        <tr>
+            <td align="center"><%=listaLibros.get(i).getISBN()%></td>
+            <td align="center"><%=listaLibros.get(i).getTitulo()%></td>
+            <td align="center"><%=listaLibros.get(i).getAnio()%></td>
+            <td align="center"><%=listaLibros.get(i).getEjemplares()%></td>
+        </tr>
+        <br>
+    </table>
+<%--    <h3>--%>
+<%--        ISBN:--%>
+<%--        <%=listaLibros.get(i).getISBN()%>--%>
+<%--    </h3>--%>
+<%--    <h3>--%>
+<%--        Titulo:--%>
+<%--        <%=listaLibros.get(i).getTitulo()%>--%>
+<%--    </h3>--%>
+<%--    <h3>--%>
+<%--        Año de creación:--%>
+<%--        <%=listaLibros.get(i).getAnio()%>--%>
+<%--    </h3>--%>
+<%--    <h3>--%>
+<%--        Ejemplares:--%>
+<%--        <%=listaLibros.get(i).getEjemplares()%>--%>
+<%--    </h3>--%>
     <%}%>
+    <br>
+    <a href="index.jsp">Volver a página principal</a>
 </body>
 </html>
