@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Dicsys
-  Date: 05/07/2023
-  Time: 8:53
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -29,5 +22,14 @@
         <input type="hidden" name="action" value="todos">
         <button type="submit">Mostrar todos</button>
     </form>
+    <br>
+    <br>
+    <h2>Buscar un libro por ISBN</h2>
+    <form action="SvLibro" method="GET">
+        <input type="hidden" name="action" value="porISBN">
+        <label><input type="text" name="isbn"></label>
+        <button type="submit">Buscar por ISBN</button>
+    </form>
+
 </body>
 </html>

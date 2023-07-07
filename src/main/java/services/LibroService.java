@@ -29,4 +29,8 @@ public class LibroService {
     public List<Libro> todosLosLibros() {
         return libroDAO.todosLosLibros();
     }
+
+    public Libro buscarPorIsbn(Long isbn) {
+        return libroDAO.busquedaPorIsbn(isbn);
+    }
 }

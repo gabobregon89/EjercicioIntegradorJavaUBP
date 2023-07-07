@@ -38,4 +38,19 @@ public class LibroDAO {
             }
         }
     }
+
+    public Libro busquedaPorIsbn(Long isbn) {
+        entityManager = Conexion.getEntityManager();
+        try {
+            Query sql = entityManager.createQuery("SELECT a FROM Libro a WHERE a.ISBN = :isbn");
+            sql.setParameter("isbn", isbn);
+            Libro libro = (Libro) sql.getSingleResult();
+//            Libro libro = entityManager.find(Libro.class, isbn);
+            return libro;
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    }
 }

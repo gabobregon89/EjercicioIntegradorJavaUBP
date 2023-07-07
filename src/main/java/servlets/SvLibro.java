@@ -23,12 +23,19 @@ public class SvLibro extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String action = request.getParameter("action");
 
-//        if (action.equals("todos")) {
-        List<Libro> listaLibros = libroService.todosLosLibros();
-        HttpSession miSession = request.getSession();
-        miSession.setAttribute("listaLibros", listaLibros);
-//        }
-        response.sendRedirect("buscarLibros.jsp");
+        if (action.equals("todos")) {
+            List<Libro> listaLibros = libroService.todosLosLibros();
+            HttpSession miSession = request.getSession();
+            miSession.setAttribute("listaLibros", listaLibros);
+            response.sendRedirect("buscarLibros.jsp");
+        } else if (action.equals("porISBN")) {
+            Long isbn = Long.parseLong(request.getParameter("isbn"));
+            Libro libro = libroService.buscarPorIsbn(isbn);
+            HttpSession miSession = request.getSession();
+            miSession.setAttribute("libro", libro);
+            response.sendRedirect("busquedaPorIsbn.jsp");
+        }
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
