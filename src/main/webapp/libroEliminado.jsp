@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Búsqueda por ISBN</title>
+    <title>Libro eliminado</title>
 </head>
 <body>
-    <h1>Resultado de búsqueda por ISBN</h1>
+    <h1>Este libro se ha eliminado</h1>
     <%
         Libro libro = (Libro) request.getSession().getAttribute("libro");
     %>
@@ -31,32 +31,7 @@
             <td align="center"><%=libro.getAlta()%></td>
         </tr>
     </table>
-    <%
-        if (libro.getAlta()) {
-    %>
     <br>
-    <form action="SvLibro" method="GET">
-        <input type="hidden" name="action" value="eliminar">
-        <input type="hidden" name="isbnEliminar" value=<%=libro.getISBN()%>>
-        <button type="submit">Eliminar</button>
-    </form>
-    <br>
-    <%
-        } else {
-    %>
-    <br>
-    <form action="SvLibro" method="GET">
-        <input type="hidden" name="action" value="activar">
-        <input type="hidden" name="isbnActivar" value=<%=libro.getISBN()%>>
-        <button type="submit">Activar</button>
-    </form>
-    <br>
-    <%}%>
-    <form action="SvLibro" method="GET">
-        <input type="hidden" name="action" value="editar">
-        <input type="hidden" name="isbnActualizar" value=<%=libro.getISBN()%>>
-        <button type="submit">Actualizar</button>
-    </form>
     <br>
     <a href="index.jsp">Volver a página principal</a>
 </body>

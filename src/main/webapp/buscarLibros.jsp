@@ -30,25 +30,10 @@
             <td align="center"><%=listaLibros.get(i).getTitulo()%></td>
             <td align="center"><%=listaLibros.get(i).getAnio()%></td>
             <td align="center"><%=listaLibros.get(i).getEjemplares()%></td>
+            <td align="center"><%=listaLibros.get(i).getAlta()%></td>
         </tr>
         <br>
     </table>
-<%--    <h3>--%>
-<%--        ISBN:--%>
-<%--        <%=listaLibros.get(i).getISBN()%>--%>
-<%--    </h3>--%>
-<%--    <h3>--%>
-<%--        Titulo:--%>
-<%--        <%=listaLibros.get(i).getTitulo()%>--%>
-<%--    </h3>--%>
-<%--    <h3>--%>
-<%--        Año de creación:--%>
-<%--        <%=listaLibros.get(i).getAnio()%>--%>
-<%--    </h3>--%>
-<%--    <h3>--%>
-<%--        Ejemplares:--%>
-<%--        <%=listaLibros.get(i).getEjemplares()%>--%>
-<%--    </h3>--%>
     <%}%>
     <br>
     <a href="index.jsp">Volver a página principal</a>

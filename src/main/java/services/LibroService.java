@@ -33,4 +33,19 @@ public class LibroService {
     public Libro buscarPorIsbn(Long isbn) {
         return libroDAO.busquedaPorIsbn(isbn);
     }
+
+    public Libro eliminarLibro(Long isbn) {
+        Libro libro = buscarPorIsbn(isbn);
+        return libroDAO.borrarLibro(libro);
+    }
+
+    public void actualizarLibro(Libro libro) {
+//        Libro libro = buscarPorIsbn(isbn);
+        libroDAO.editarLibro(libro);
+    }
+
+    public Libro activarLibro(Long isbn) {
+        Libro libro = buscarPorIsbn(isbn);
+        return libroDAO.activandoLibro(libro);
+    }
 }

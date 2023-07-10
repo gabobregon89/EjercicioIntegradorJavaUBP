@@ -29,7 +29,7 @@ public class LibroDAO {
     public List<Libro> todosLosLibros() {
         entityManager = Conexion.getEntityManager();
         try {
-            Query sql = entityManager.createQuery("SELECT a FROM Libro a");
+            Query sql = entityManager.createQuery("SELECT a FROM Libro a ORDER BY a.alta DESC");
             List<Libro> listaLibros = sql.getResultList();
             return listaLibros;
         } finally {
@@ -45,7 +45,49 @@ public class LibroDAO {
             Query sql = entityManager.createQuery("SELECT a FROM Libro a WHERE a.ISBN = :isbn");
             sql.setParameter("isbn", isbn);
             Libro libro = (Libro) sql.getSingleResult();
-//            Libro libro = entityManager.find(Libro.class, isbn);
+            return libro;
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    }
+
+    public Libro borrarLibro(Libro libro) {
+        entityManager = Conexion.getEntityManager();
+        libro.setAlta(false);
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.merge(libro);
+            entityManager.getTransaction().commit();
+            return libro;
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    }
+
+    public void editarLibro(Libro libro) {
+        entityManager = Conexion.getEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.merge(libro);
+            entityManager.getTransaction().commit();
+        } finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    }
+
+    public Libro activandoLibro(Libro libro) {
+        entityManager = Conexion.getEntityManager();
+        libro.setAlta(true);
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.merge(libro);
+            entityManager.getTransaction().commit();
             return libro;
         } finally {
             if (entityManager != null) {

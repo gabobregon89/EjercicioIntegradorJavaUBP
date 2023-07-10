@@ -22,20 +22,69 @@ public class SvLibro extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String action = request.getParameter("action");
+        List<Libro> listaLibros;
 
         if (action.equals("todos")) {
-            List<Libro> listaLibros = libroService.todosLosLibros();
-            HttpSession miSession = request.getSession();
-            miSession.setAttribute("listaLibros", listaLibros);
-            response.sendRedirect("buscarLibros.jsp");
+            listaLibros = libroService.todosLosLibros();
+
+            if (listaLibros != null) {
+                HttpSession miSession = request.getSession();
+                miSession.setAttribute("listaLibros", listaLibros);
+
+                response.sendRedirect("buscarLibros.jsp");
+            } else {
+                HttpSession miSession = request.getSession();
+                miSession.setAttribute("listaLibros", listaLibros);
+
+                response.sendRedirect("error.jsp");
+            }
         } else if (action.equals("porISBN")) {
-            Long isbn = Long.parseLong(request.getParameter("isbn"));
-            Libro libro = libroService.buscarPorIsbn(isbn);
+            Libro libro = new Libro();
+            if (!request.getParameter("isbn").equals("")) {
+                Long isbn = Long.parseLong(request.getParameter("isbn"));
+
+                libro = libroService.buscarPorIsbn(isbn);
+
+                HttpSession miSession = request.getSession();
+                miSession.setAttribute("libro", libro);
+
+                response.sendRedirect("busquedaPorIsbn.jsp");
+            } else {
+                HttpSession miSession = request.getSession();
+                miSession.setAttribute("libro", libro);
+
+                response.sendRedirect("errorParticular.jsp");
+            }
+        } else if (action.equals("eliminar")) {
+            Long isbn = Long.parseLong(request.getParameter("isbnEliminar"));
+
+            Libro libro = libroService.eliminarLibro(isbn);
+
             HttpSession miSession = request.getSession();
             miSession.setAttribute("libro", libro);
-            response.sendRedirect("busquedaPorIsbn.jsp");
-        }
 
+            response.sendRedirect("libroEliminado.jsp");
+
+        } else if (action.equals("activar")) {
+            Long isbn = Long.parseLong(request.getParameter("isbnActivar"));
+
+            Libro libro = libroService.activarLibro(isbn);
+
+            HttpSession miSession = request.getSession();
+            miSession.setAttribute("libro", libro);
+
+            response.sendRedirect("libroActivado.jsp");
+
+        } else if (action.equals("editar")) {
+            Long isbn = Long.parseLong(request.getParameter("isbnActualizar"));
+
+            Libro libro = libroService.buscarPorIsbn(isbn);
+
+            HttpSession miSession = request.getSession();
+            miSession.setAttribute("libro", libro);
+
+            response.sendRedirect("actualizarLibro.jsp");
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -49,6 +98,26 @@ public class SvLibro extends HttpServlet {
             String ejemplares = request.getParameter("ejemplares");
 
             libroService.crearLibro(isbn, titulo, anio, ejemplares);
+
+            response.sendRedirect("index.jsp");
+
+        } else if (action.equals("actualizar")) {
+
+            Libro libro =  (Libro) request.getSession().getAttribute("libro");
+
+            String isbn = request.getParameter("isbn");
+            String titulo = request.getParameter("titulo");
+            String anio = request.getParameter("anio");
+            String ejemplares = request.getParameter("ejemplares");
+            String alta = request.getParameter("alta");
+
+            libro.setISBN(Long.parseLong(isbn));
+            libro.setTitulo(titulo);
+            libro.setAnio(Integer.parseInt(anio));
+            libro.setEjemplares(Integer.parseInt(ejemplares));
+            libro.setAlta(Boolean.parseBoolean(alta));
+
+            libroService.actualizarLibro(libro);
 
             response.sendRedirect("index.jsp");
         }

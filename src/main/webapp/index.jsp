@@ -17,7 +17,8 @@
     </form>
     <br>
     <br>
-    <h2>Buscar un libro</h2>
+    <h2>Ver todos los libro</h2>
+    <h3>Si quieres ver todos los libros que hay disponibles, ingresa aqui</h3>
     <form action="SvLibro" method="GET">
         <input type="hidden" name="action" value="todos">
         <button type="submit">Mostrar todos</button>
@@ -25,11 +26,13 @@
     <br>
     <br>
     <h2>Buscar un libro por ISBN</h2>
+    <h3>Si quieres ver los detalles de un libro en particular, ingresa aqui su ISBN, además podrás eliminarlo, activarlo y editarlo</h3>
     <form action="SvLibro" method="GET">
         <input type="hidden" name="action" value="porISBN">
         <label><input type="text" name="isbn"></label>
         <button type="submit">Buscar por ISBN</button>
     </form>
-
+    <br>
+    <br>
 </body>
 </html>
