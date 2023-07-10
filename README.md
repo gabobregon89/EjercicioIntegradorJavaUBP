@@ -1,5 +1,5 @@
 # EjercicioIntegradorJavaUBP
-Resolución de ejercicio integrador Java - UBP
+Consignas del ejercicio integrador Java - UBP
 
 El objetivo de este ejercicio consiste en el desarrollo de un sistema web de guardado de libros en JAVA utilizando una base de datos Sqlite, JPA o JDBC para persistir objetos y JSP como tecnología web y Maven como gestor de dependencias.
 
@@ -38,3 +38,26 @@ Notas aclaratorias:
 -Es un plus agregar en alguna vista un buscador de libro por ISBN
 
 -No utilizar creadores de controladoras JPA la idea es que puedan crear estos controladores codeándolos desde 0.
+
+## Dependencias que se cargaron para el proyecto:
+
+<dependency>
+  <groupId>javax.servlet</groupId>
+  <artifactId>javax.servlet-api</artifactId>
+  <version>3.1.0</version>
+</dependency>
+<dependency>
+  <groupId>com.github.gwenn</groupId>
+  <artifactId>sqlite-dialect</artifactId>
+  <version>0.1.0</version>
+</dependency>
+<dependency>
+  <groupId>org.xerial</groupId>
+  <artifactId>sqlite-jdbc</artifactId>
+  <version>3.36.0.3</version>
+</dependency>
+<dependency>
+  <groupId>org.hibernate</groupId>
+  <artifactId>hibernate-core</artifactId>
+  <version>5.6.14.Final</version>
+</dependency>
