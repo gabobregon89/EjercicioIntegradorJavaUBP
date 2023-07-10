@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 public class SvLibro extends HttpServlet {
 
@@ -97,9 +98,12 @@ public class SvLibro extends HttpServlet {
             String anio = request.getParameter("anio");
             String ejemplares = request.getParameter("ejemplares");
 
-            libroService.crearLibro(isbn, titulo, anio, ejemplares);
-
-            response.sendRedirect("index.jsp");
+            if (isbn.equals("") || titulo.equals("") || anio.equals("") || ejemplares.equals("")) {
+                response.sendRedirect("errorCarga.jsp");
+            } else {
+                libroService.crearLibro(isbn, titulo, anio, ejemplares);
+                response.sendRedirect("index.jsp");
+            }
 
         } else if (action.equals("actualizar")) {
 

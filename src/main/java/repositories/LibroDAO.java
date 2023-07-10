@@ -19,7 +19,10 @@ public class LibroDAO {
             entityManager.getTransaction().begin();
             entityManager.persist(libro);
             entityManager.getTransaction().commit();
-        } finally {
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
+        finally {
             if (entityManager != null) {
                 entityManager.close();
             }
